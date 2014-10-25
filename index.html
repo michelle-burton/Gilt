@@ -1,0 +1,123 @@
+<!DOCTYPE html> 
+
+<head> 
+	<title>Gilt API: Mobile JQuery</title> 
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+
+	
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+	<script src="_js/handlebars-v2.0.0.js" type="text/javascript" charset="utf-8"></script></script>
+	<link rel="stylesheet" href="_css/style.css" />
+</head>
+<body>
+
+<!---Page Women --->
+<div data-role="page" id="women" >
+
+<div data-role="header" id="header">
+	<a href="#sidePanel" data-transition="slide" data-display="push" data-position="right" data-role="none">
+		<span id="hamburger" alt="Hamburger Unicode Symbol">&#9776;</span>
+	</a>	
+	<img src="http://assets4.giltcdn.com/a/img/web-mosaic/0.0.91/nav/unified/nav-logo.png" alt="Gilt Logo">
+	<span>Gilt API:  Women</span>
+</div>
+
+<div data-role="content">
+
+	<img src="images/women.jpg" id="heroImg">
+	<ul data-role="listview" data-inset="true" id="prodList"></ul>
+</div>
+
+<div data-role="footer" position: fixed>jQuery Mobile & Handlebars with Gilt API </div>
+
+
+
+<!--- Women Page Navigation --->
+
+<div data-role="panel" id="sidePanel" data-corners="false" data-theme="none" data-shadow="false" data-tolerance="0,0" >
+<div  class="nav-heading">
+	<span>Gilt Navigation </span>
+</div>
+	<ul>
+		<li><a href="#men" data-role="button" data-theme="a" data-icon="arrow-r" onClick="ajax('https://api.gilt.com/v1/sales/men/active.json?apikey=a95d6247ebf6a5443da1a9ea6a581a46')">men</a></li>
+	</ul>
+</div>
+
+</div>
+
+
+
+
+
+<!---Page Men --->
+
+<div data-role="page" id="men" >
+
+<div data-role="header" id="header">
+<a href="#sidePanel" data-transition="slide" data-display="push" data-position="right" data-role="none">
+		<span id="hamburger" alt="Hamburger Unicode Symbol">&#9776;</span>
+	</a>	
+	<img src="http://assets4.giltcdn.com/a/img/web-mosaic/0.0.91/nav/unified/nav-logo.png" alt="Gilt Logo">
+	<span>Gilt API: Men</span>
+</div>
+
+
+
+<div data-role="content">
+	<img src="images/men.jpg" id="heroImg">
+	<ul data-role="listview" data-inset="true" id="prodList"></ul>
+</div>
+
+<div data-role="footer" position: fixed>jQuery Mobile & Handlebars with Gilt API </div>
+
+
+
+
+<!--- Mens Page Navigation --->
+<div data-role="panel" id="sidePanel" data-corners="false" data-theme="none" data-shadow="false" data-tolerance="0,0"  >
+
+
+<div  class="nav-heading">
+	<span>Gilt Navigation </span>
+</div>
+
+	<ul>
+		<li><a href="#women" data-role="button" data-theme="a" data-icon="arrow-r" onclick="ajax('https://api.gilt.com/v1/sales/women/active.json?apikey=a95d6247ebf6a5443da1a9ea6a581a46')" >women</a></li>
+	
+	</ul>
+</div>
+
+</div>
+
+
+
+<script id="category" type="text/x-handlebars-template">
+{{#sales}}
+<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-first-child ui-btn-up-c ">
+<div class="ui-btn-inner ui-li">
+<div class="ui-btn-text">
+	<a href="{{sale_url}}" class="1_link ui-link-inherit" target="_blank">
+	{{#image_urls}}
+		{{#161x110}}
+			<img class="ui-li-thumb" src="{{url}}">
+		{{/161x110}}
+	{{/image_urls}}
+	<h2 class="1_h2 ui-li-heading">{{name}}</h2>
+	<p class="1_description ui-li-desc">{{description}}</p>
+	</a>
+</div>
+<span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>
+</div>
+</li>
+{{/sales}}
+</script>
+
+<script src="_js/ajax_script.js"></script>
+
+
+</body>
+</html>
